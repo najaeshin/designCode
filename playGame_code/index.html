@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PlayGames</title>
+    <!-- bootstrap5.0.2-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <!-- fontawesome-->
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/popup.css" />
+
+    <!-- jquery 1.8.2 -->
+    <script
+      type="text/javascript"
+      src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"
+    ></script>
+
+    <!-- 회원가입 유효성 검사 -->
+    <script src="js/jquery.validate.min.js"></script>
+  </head>
+  <body>
+    <div id="wrap" class="wrap">
+      <header class="top_bar">
+        <div class="inner">
+          <div class="logo"><img src="img/simple_logo.png" /></div>
+          <div class="login_join">
+            <button
+              type="button"
+              class="loginBtn btn-round"
+              data-bs-toggle="modal"
+              data-bs-target="#popupLogin"
+            >
+              로그인
+            </button>
+            <button
+              type="button"
+              class="joinBtn btn-round"
+              data-bs-toggle="modal"
+              data-bs-target="#popupJoin"
+            >
+              회원가입
+            </button>
+            <button
+              type="button"
+              class="btn-st1 btn-green"
+              data-bs-toggle="modal"
+              data-bs-target="#popupJoin"
+            >
+              회원가입
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- 모달 회원가입 -->
+      <div
+        class="modal fade popup-app popup-basic popup-join"
+        id="popupJoin"
+        tabindex="-1"
+        aria-labelledby="popupJoinTitle"
+        style="display: none"
+        aria-hidden="true"
+      >
+        <button
+          type="button"
+          class="ir-img btn-close-white"
+          data-bs-toggle="modal"
+          data-bs-target="#popupJoin"
+        >
+          닫기
+        </button>
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="container modal-content">
+            <div class="row justify-content-center">
+              <div class="pop-wrap">
+                <div class="container pop-content">
+                  <div class="tab-box">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                      <li
+                        class="col-12 col-md-12 col-lg-12 nav-item"
+                        role="presentation"
+                      >
+                        <a
+                          class="nav-link active"
+                          id="event-tab"
+                          data-bs-toggle="tab"
+                          href="#event"
+                          role="tab"
+                          aria-controls="event"
+                          aria-selected="true"
+                          >회원가입</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="col-lg-12 tab-content" id="tabContent">
+                    <h2><img src="img/common/logo.svg" /></h2>
+                    <div
+                      class="tab-pane event-content fade show active"
+                      id="event"
+                      role="tabpanel"
+                      aria-labelledby="event-tab"
+                    >
+                      <div class="form-st1 form-box">
+                        <form
+                          id="formJoin"
+                          name="form_join"
+                          class="form-join"
+                          method="POST"
+                        >
+                          <ul class="form-content basic-scroll">
+                            <li>
+                              <span class="left-tit">추천인 코드</span>
+                              <div class="input-box">
+                                <input
+                                  type="text"
+                                  name="code"
+                                  class="input-st2"
+                                />
+                                <p class="txt-guide">ex) Z12BB3</p>
+                              </div>
+                            </li>
+                            <li>
+                              <span class="left-tit">아이디</span>
+                              <div class="input-box">
+                                <input
+                                  type="text"
+                                  name="user_id"
+                                  class="input-st2"
+                                />
+                                <p class="txt-guide">
+                                  ※ 영문,숫자 조합 4~12글자
+                                </p>
+                              </div>
+                            </li>
+                            <li>
+                              <span class="left-tit">닉네임</span>
+                              <div class="input-box">
+                                <input
+                                  type="text"
+                                  name="nick_name"
+                                  class="input-st2"
+                                />
+                                <p class="txt-guide">
+                                  ※ 영문,숫자 조합 4~12글자
+                                </p>
+                              </div>
+                            </li>
+                            <li>
+                              <span class="left-tit">비밀번호</span>
+                              <div class="input-box">
+                                <input
+                                  type="password"
+                                  name="user_pw"
+                                  class="input-st2"
+                                  id="password"
+                                />
+                                <p class="txt-guide">
+                                  ※ 영문,숫자 조합 4~12글자
+                                </p>
+                              </div>
+                            </li>
+                            <li>
+                              <span class="left-tit">비밀번호 확인</span>
+                              <div class="input-box">
+                                <input
+                                  type="password"
+                                  name="user_pw_ok"
+                                  class="input-st2"
+                                />
+                                <p class="txt-guide">
+                                  ※ 영문,숫자 조합 4~12글자
+                                </p>
+                              </div>
+                            </li>
+                            <li>
+                              <span class="left-tit">휴대폰 번호</span>
+                              <div class="input-box">
+                                <input
+                                  type="text"
+                                  name="user_phone"
+                                  class="input-st2"
+                                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                  maxlength="20"
+                                />
+                                <p class="txt-guide">'-' 없이 번호만 입력</p>
+                              </div>
+                            </li>
+                            <li>
+                              <span class="left-tit">은행선택</span>
+                              <div class="input-box">
+                                <select name="user_bank" class="select-st1">
+                                  <option value="">은행 선택</option>
+                                  <option value="국민">국민</option>
+                                  <option value="기업">기업</option>
+                                  <option value="농협">농협</option>
+                                  <option value="신한">신한</option>
+                                  <option value="조흥">조흥</option>
+                                  <option value="외환">외환</option>
+                                  <option value="우체국">우체국</option>
+                                  <option value="SC제일">SC제일</option>
+                                  <option value="하나">하나</option>
+                                  <option value="한국시티">한국시티</option>
+                                  <option value="한미">한미</option>
+                                  <option value="우리">우리</option>
+                                  <option value="경남">경남</option>
+                                  <option value="광주">광주</option>
+                                  <option value="대구">대구</option>
+                                  <option value="도이치">도이치</option>
+                                  <option value="부산">부산</option>
+                                  <option value="산업">산업</option>
+                                  <option value="수협">수협</option>
+                                  <option value="전북">전북</option>
+                                  <option value="제주">제주</option>
+                                  <option value="새마을">새마을</option>
+                                  <option value="신협">신협</option>
+                                  <option value="HSBC">HSBC</option>
+                                  <option value="상호저축">상호저축</option>
+                                  <option value="농협중앙회">농협중앙회</option>
+                                </select>
+                                <p class="txt-guide">'-' 없이 번호만 입력</p>
+                              </div>
+                            </li>
+                            <li>
+                              <span class="left-tit">출금 계좌번호</span>
+                              <div class="input-box">
+                                <input
+                                  type="text"
+                                  name="user_account"
+                                  class="input-st2"
+                                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                  maxlength="20"
+                                />
+                                <p class="txt-guide">'-' 없이 번호만 입력</p>
+                              </div>
+                            </li>
+                            <li>
+                              <span class="left-tit">예금주</span>
+                              <div class="input-box">
+                                <input
+                                  type="text"
+                                  name="user_account_name"
+                                  class="input-st2"
+                                />
+                                <p class="txt-guide">'-' 없이 번호만 입력</p>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="txt-box">
+                                <ul>
+                                  <li>
+                                    <p>
+                                      회원님께서는 출금 비밀번호는 신중하게
+                                      생각해서 입력하시기 바랍니다.
+                                    </p>
+                                  </li>
+                                  <li>
+                                    <p>
+                                      로그인 비밀번호나 1111.2222.3333등 노출이
+                                      쉬운 번호를 입력하여 피해가 발생하는 경우
+                                      있습니다.
+                                    </p>
+                                  </li>
+                                  <li>
+                                    <p>
+                                      이에 따른 책임은 전적으로 본인에게 있음을
+                                      알려 드립니다.
+                                    </p>
+                                  </li>
+                                  <li>
+                                    <p>
+                                      출금 요청시 출금 비밀번호가 일치 하지 않을
+                                      경우는 출금신청이 되지 않습니다.
+                                    </p>
+                                  </li>
+                                </ul>
+                              </div>
+                            </li>
+                          </ul>
+                          <div class="btn-box">
+                            <button
+                              type="submit"
+                              href="javascript: return false"
+                              class="btn-st1 btn-green"
+                            >
+                              가입하기
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 모달 로그인 테스트 -->
+      <div
+        class="modal fade popup-app popup-basic popup-login"
+        id="popupLogin"
+        tabindex="-1"
+        aria-labelledby="popupJoinTitle"
+        style="display: none"
+        aria-hidden="true"
+      >
+        <button
+          type="button"
+          class="ir-img btn-close-white"
+          data-bs-toggle="modal"
+          data-bs-target="#popupJoin"
+        >
+          닫기
+        </button>
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="container modal-content">
+            <div class="row justify-content-center">
+              <div class="pop-wrap">
+                <div class="container pop-content">
+                  <div class="tab-box">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                      <li
+                        class="col-12 col-md-12 col-lg-12 nav-item"
+                        role="presentation"
+                      >
+                        <a
+                          class="nav-link active"
+                          id="event-tab"
+                          data-bs-toggle="tab"
+                          href="#event"
+                          role="tab"
+                          aria-controls="event"
+                          aria-selected="true"
+                          >로그인</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="col-lg-12 tab-content" id="tabContent">
+                    <h2><img src="img/common/logo.svg" /></h2>
+                    <div
+                      class="tab-pane event-content fade show active"
+                      id="event"
+                      role="tabpanel"
+                      aria-labelledby="event-tab"
+                    >
+                      <div class="form-st1 form-box">
+                        <form
+                          id="formJoin"
+                          name="form_join"
+                          class="form-join"
+                          method="POST"
+                        >
+                          <ul class="form-content basic-scroll">
+                            <li>
+                              <span class="left-tit">추천인 코드</span>
+                              <div class="input-box">
+                                <input
+                                  type="text"
+                                  name="code"
+                                  class="input-st2"
+                                />
+                                <p class="txt-guide">ex) Z12BB3</p>
+                              </div>
+                            </li>
+                            <li>
+                              <span class="left-tit">아이디</span>
+                              <div class="input-box">
+                                <input
+                                  type="text"
+                                  name="user_id"
+                                  class="input-st2"
+                                />
+                                <p class="txt-guide">
+                                  ※ 영문,숫자 조합 4~12글자
+                                </p>
+                              </div>
+                            </li>
+                            <li>
+                              <span class="left-tit">닉네임</span>
+                              <div class="input-box">
+                                <input
+                                  type="text"
+                                  name="nick_name"
+                                  class="input-st2"
+                                />
+                                <p class="txt-guide">
+                                  ※ 영문,숫자 조합 4~12글자
+                                </p>
+                              </div>
+                            </li>
+                            <li>
+                              <span class="left-tit">비밀번호</span>
+                              <div class="input-box">
+                                <input
+                                  type="password"
+                                  name="user_pw"
+                                  class="input-st2"
+                                  id="password"
+                                />
+                                <p class="txt-guide">
+                                  ※ 영문,숫자 조합 4~12글자
+                                </p>
+                              </div>
+                            </li>
+                            <li>
+                              <span class="left-tit">비밀번호 확인</span>
+                              <div class="input-box">
+                                <input
+                                  type="password"
+                                  name="user_pw_ok"
+                                  class="input-st2"
+                                />
+                                <p class="txt-guide">
+                                  ※ 영문,숫자 조합 4~12글자
+                                </p>
+                              </div>
+                            </li>
+                            <li>
+                              <span class="left-tit">휴대폰 번호</span>
+                              <div class="input-box">
+                                <input
+                                  type="text"
+                                  name="user_phone"
+                                  class="input-st2"
+                                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                  maxlength="20"
+                                />
+                                <p class="txt-guide">'-' 없이 번호만 입력</p>
+                              </div>
+                            </li>
+                            <li>
+                              <span class="left-tit">은행선택</span>
+                              <div class="input-box">
+                                <select name="user_bank" class="select-st1">
+                                  <option value="">은행 선택</option>
+                                  <option value="국민">국민</option>
+                                  <option value="기업">기업</option>
+                                  <option value="농협">농협</option>
+                                  <option value="신한">신한</option>
+                                  <option value="조흥">조흥</option>
+                                  <option value="외환">외환</option>
+                                  <option value="우체국">우체국</option>
+                                  <option value="SC제일">SC제일</option>
+                                  <option value="하나">하나</option>
+                                  <option value="한국시티">한국시티</option>
+                                  <option value="한미">한미</option>
+                                  <option value="우리">우리</option>
+                                  <option value="경남">경남</option>
+                                  <option value="광주">광주</option>
+                                  <option value="대구">대구</option>
+                                  <option value="도이치">도이치</option>
+                                  <option value="부산">부산</option>
+                                  <option value="산업">산업</option>
+                                  <option value="수협">수협</option>
+                                  <option value="전북">전북</option>
+                                  <option value="제주">제주</option>
+                                  <option value="새마을">새마을</option>
+                                  <option value="신협">신협</option>
+                                  <option value="HSBC">HSBC</option>
+                                  <option value="상호저축">상호저축</option>
+                                  <option value="농협중앙회">농협중앙회</option>
+                                </select>
+                                <p class="txt-guide">'-' 없이 번호만 입력</p>
+                              </div>
+                            </li>
+                            <li>
+                              <span class="left-tit">출금 계좌번호</span>
+                              <div class="input-box">
+                                <input
+                                  type="text"
+                                  name="user_account"
+                                  class="input-st2"
+                                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                  maxlength="20"
+                                />
+                                <p class="txt-guide">'-' 없이 번호만 입력</p>
+                              </div>
+                            </li>
+                            <li>
+                              <span class="left-tit">예금주</span>
+                              <div class="input-box">
+                                <input
+                                  type="text"
+                                  name="user_account_name"
+                                  class="input-st2"
+                                />
+                                <p class="txt-guide">'-' 없이 번호만 입력</p>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="txt-box">
+                                <ul>
+                                  <li>
+                                    <p>
+                                      회원님께서는 출금 비밀번호는 신중하게
+                                      생각해서 입력하시기 바랍니다.
+                                    </p>
+                                  </li>
+                                  <li>
+                                    <p>
+                                      로그인 비밀번호나 1111.2222.3333등 노출이
+                                      쉬운 번호를 입력하여 피해가 발생하는 경우
+                                      있습니다.
+                                    </p>
+                                  </li>
+                                  <li>
+                                    <p>
+                                      이에 따른 책임은 전적으로 본인에게 있음을
+                                      알려 드립니다.
+                                    </p>
+                                  </li>
+                                  <li>
+                                    <p>
+                                      출금 요청시 출금 비밀번호가 일치 하지 않을
+                                      경우는 출금신청이 되지 않습니다.
+                                    </p>
+                                  </li>
+                                </ul>
+                              </div>
+                            </li>
+                          </ul>
+                          <div class="btn-box">
+                            <button
+                              type="submit"
+                              href="javascript: return false"
+                              class="btn-st1 btn-green"
+                            >
+                              가입하기
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section>
+        <div class="gamewrap">
+          <div class="section"><img src="img/banner.png" /></div>
+          <ul class="game_lst">
+            <li class="lst_item">
+              <a href="#"><img src="img/holdem.png" /></a>
+            </li>
+            <li class="lst_item">
+              <a href="#"><img src="img/badugi.png" /></a>
+            </li>
+            <li class="lst_item">
+              <a href="#"><img src="img/7poker.png" /></a>
+            </li>
+            <li class="lst_item">
+              <a href="#"><img src="img/matgo.png" /></a>
+            </li>
+            <li class="lst_item">
+              <a href="#"><img src="img/sudda.png" /></a>
+            </li>
+          </ul>
+        </div>
+        <div class="notice_faq">
+          <div class="notice">
+            <div class="notice_header">
+              <h5 class="notice_title">공지사항</h5>
+            </div>
+            <ul class="notice_list">
+              <li>
+                <span class="nt_title"
+                  >비상연락망 &amp; 평생 도메인 주소 안내</span
+                >
+                <em>2022.01.17</em>
+              </li>
+              <li>
+                <span class="nt_title"
+                  >비상연락망 &amp; 평생 도메인 주소 안내</span
+                >
+                <em>2022.01.17</em>
+              </li>
+              <li>
+                <span class="nt_title"
+                  >비상연락망 &amp; 평생 도메인 주소 안내</span
+                >
+                <em>2022.01.17</em>
+              </li>
+              <li>
+                <span class="nt_title"
+                  >비상연락망 &amp; 평생 도메인 주소 안내</span
+                >
+                <em>2022.01.17</em>
+              </li>
+              <li>
+                <span class="nt_title"
+                  >비상연락망 &amp; 평생 도메인 주소 안내</span
+                >
+                <em>2022.01.17</em>
+              </li>
+              <li>
+                <span class="nt_title"
+                  >비상연락망 &amp; 평생 도메인 주소 안내</span
+                >
+                <em>2022.01.17</em>
+              </li>
+            </ul>
+          </div>
+          <div class="faq"><img src="img/faq.png" /></div>
+        </div>
+      </section>
+      <footer class="footer_wrap">
+        Copyright ⓒ 2023 PlayGames All Rights Reserved.
+      </footer>
+    </div>
+    <!-- bootstrap 5.0.2 -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
